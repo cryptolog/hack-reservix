@@ -44,7 +44,12 @@ public class ReservationService {
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE)
-	public void delete(@RequestBody Termin termin){
-		terminRepository.delete(termin);
+	public ResponseEntity delete(@RequestBody Termin termin){
+		if(terminRepository.findOne(termin.getId())!= null) {
+			terminRepository.delete(termin);
+		}else{
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity(HttpStatus.OK);
 	}
 }
