@@ -1,4 +1,4 @@
-package de.btcag.hackathon.boundary;
+package de.btcag.hackathon.Boundary;
 
 import de.btcag.hackathon.model.dao.TerminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
