@@ -1,8 +1,10 @@
 package de.btcag.hackathon.Boundary;
 
 import de.btcag.hackathon.model.dao.TerminRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +12,7 @@ import de.btcag.hackathon.business.ReservationService;
 import de.btcag.hackathon.model.Termin;
 
 @RestController
-@RequestMapping(value = "termine/reservierung")
+@RequestMapping(value = "termine/reservierung", produces = {MediaType.APPLICATION_JSON_VALUE})
 public class ReservationRest {
 	
 	@Autowired
@@ -24,9 +26,14 @@ public class ReservationRest {
 		return reservationService.addTermin(termin);
 	}
 
-    @RequestMapping( method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public Termin find(@RequestParam()Integer id) {
         return terminRepository.findOne(id);
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "asap")
+    public Termin getAsap() {
+        return reservationService.getAsapTermin();
     }
 
     @RequestMapping(method = RequestMethod.PUT)
