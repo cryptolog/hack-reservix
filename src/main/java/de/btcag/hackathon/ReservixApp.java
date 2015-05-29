@@ -15,8 +15,8 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableAutoConfiguration
 @ComponentScan
 public class ReservixApp {
-  public static void main(String[] args) {
-    SpringApplication.run(ReservixApp.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(ReservixApp.class, args);
+    }
 }
 
